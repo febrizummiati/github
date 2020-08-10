@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">GithubUserFinal</string>
+    <string name="find">Find Username</string>
+    <string name="username">Username</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="repository">Repository</string>
+    <string name="detail_title">Detail User</string>
+    <string name="not_found">User Not Found</string>
+    <string name="change_language">Change Language</string>
+    <string name="location">Location</string>
+    <string name="company">Company</string>
+    <string name="change_language_settings">Change Language Setting</string>
+    <string name="dummy_language">dummy_language</string>
+    <string name="reminder_setting">Reminder Setting</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="repeat_set_up">Repeating Alarm Set Up</string>
+    <string name="repeat_set_down">Repeating Alarm Set Down</string>
+    <string name="alarm_message">Let\'s find user popular user on Github!</string>
+    <string name="user_favorite">User Favorite</string>
+    <string name="addFavorite">Add to Favorite</string>
+    <string name="removefromfavorite">Remove From Favorite</string>
+    <string name="success_remove_from_favorite">Success Remove From Favorite</string>
+    <string name="success_add_to_favorite">Success Add To Favorite</string>
+    <string name="titleSearch">Search App</string>
+    <string name="titleDetail">Detail User</string>
+</resources>

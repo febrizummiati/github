@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GithubUserFinal</string>
+    <string name="find">Temukan Pengguna</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="repository">Repositori</string>
+    <string name="detail_title">Detail Pengguna</string>
+    <string name="not_found">Pengguna Tidak Ditemukan</string>
+    <string name="change_language">Ubah Bahasa</string>
+    <string name="location">Lokasi</string>
+    <string name="company">Perusahaan</string>
+    <string name="change_language_settings">Pengaturan Ubah Bahasa</string>
+    <string name="dummy_language">dummy_bahasa</string>
+    <string name="reminder_setting">Pengaturan Pengingat</string>
+    <string name="favorite">Favorit</string>
+    <string name="setting">Pengaturan</string>
+    <string name="repeat_set_up">Nyalakan Pengaturan Alarm</string>
+    <string name="repeat_set_down">Matikan Pengaturan Alarm</string>
+    <string name="alarm_message">Temukan pengguna populer di Github</string>
+    <string name="user_favorite">Pengguna Favorit</string>
+    <string name="removefromfavorite">Hapus dari Favorit</string>
+    <string name="success_remove_from_favorite">Sukses hapus dari Favorit</string>
+    <string name="success_add_to_favorite">Sukses tambah ke Favorit</string>
+    <string name="titleSearch">Aplikasi Pencarian</string>
+    <string name="titleDetail">Detail Pengguna</string>
+    <string name="addFavorite">Tambah ke Favorite</string>
+</resources>
