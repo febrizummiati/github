@@ -16,7 +16,7 @@ public class User implements Parcelable {
     private String name;
     @SerializedName("avatar_url")
     @Expose
-    private String urlAvatar;
+    private String avatarUrl;
     @SerializedName("html_url")
     @Expose
     private String urlHtml;
@@ -35,6 +35,10 @@ public class User implements Parcelable {
     @SerializedName("public_repos")
     @Expose
     private Integer repository;
+
+    public User() {
+
+    }
 
     private Integer id;
 
@@ -62,12 +66,12 @@ public class User implements Parcelable {
         this.name = name;
     }
 
-    public String getUrlAvatar() {
-        return urlAvatar;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setUrlAvatar(String urlAvatar) {
-        this.urlAvatar = urlAvatar;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getUrlHtml() {
@@ -118,16 +122,9 @@ public class User implements Parcelable {
         this.repository = repository;
     }
 
-    public User(int id, String login, String name, String avatar_url){
-
-    }
-    public User(){
-
-    }
-
-    public User(String login, String urlAvatar, String urlHtml, Integer follower, Integer following, String location, String company, Integer repository) {
+    public User(String login, String avatarUrl, String urlHtml, Integer follower, Integer following, String location, String company, Integer repository) {
         this.login = login;
-        this.urlAvatar = urlAvatar;
+        this.avatarUrl = avatarUrl;
         this.urlHtml = urlHtml;
         this.follower = follower;
         this.following = following;
@@ -136,17 +133,17 @@ public class User implements Parcelable {
         this.repository = repository;
     }
 
-    public User(Integer id, String login, String name, String urlAvatar){
+    public User(Integer id, String login, String name, String avatarUrl) {
         this.id = id;
         this.login = login;
         this.name = name;
-        this.urlAvatar = urlAvatar;
+        this.avatarUrl = avatarUrl;
     }
 
     protected User(Parcel in) {
         id = in.readInt();
         login = in.readString();
-        urlAvatar = in.readString();
+        avatarUrl = in.readString();
         urlHtml = in.readString();
         company = in.readString();
         location = in.readString();
@@ -173,10 +170,9 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(login);
-        dest.writeString(urlAvatar);
+        dest.writeString(avatarUrl);
         dest.writeString(urlHtml);
         dest.writeString(company);
         dest.writeString(location);
     }
-
 }

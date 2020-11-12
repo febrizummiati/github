@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.febrizummiati.githubuserfinal.R;
-import com.febrizummiati.githubuserfinal.adapter.UserAdapter;
+import com.febrizummiati.githubuserfinal.adapter.AdapterUser;
 import com.febrizummiati.githubuserfinal.model.User;
 import com.febrizummiati.githubuserfinal.ui.DetailActivity;
 import com.febrizummiati.githubuserfinal.viewmodel.FollowerVM;
@@ -27,7 +27,7 @@ public class FollowerFragment extends Fragment {
 
     private ProgressBar progressBar;
     private RecyclerView rvFollowers;
-    private UserAdapter userAdapter;
+    private AdapterUser adapterUser;
     private FollowerVM followerVM;
 
     public static final String EXTRA_FOLLOWERS = "extra_followers";
@@ -59,13 +59,13 @@ public class FollowerFragment extends Fragment {
         followerVM.getListFollower().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> list) {
-                userAdapter = new UserAdapter();
-                userAdapter.notifyDataSetChanged();
-                userAdapter.setListUsers(list);
+                adapterUser = new AdapterUser();
+                adapterUser.notifyDataSetChanged();
+                adapterUser.setLists(list);
 
-                rvFollowers.setAdapter(userAdapter);
+                rvFollowers.setAdapter(adapterUser);
                 showLoading(false);
-                userAdapter.setOnItemClickCallback((User data) -> {
+                adapterUser.setOnItemClickCallback((User data) -> {
                     showLoading(true);
                     Intent mIntentFollower = new Intent(getContext(), DetailActivity.class);
                     mIntentFollower.putExtra(DetailActivity.EXTRA_USER, data);

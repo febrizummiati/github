@@ -10,13 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-
-import com.febrizummiati.githubuserfinal.api.ApiClient;
+import com.febrizummiati.githubuserfinal.R;
+import com.febrizummiati.githubuserfinal.api.Api;
 import com.febrizummiati.githubuserfinal.api.ApiInterface;
 import com.febrizummiati.githubuserfinal.model.Result;
 import com.febrizummiati.githubuserfinal.model.User;
-import com.febrizummiati.githubuserfinal.R;
-import com.febrizummiati.githubuserfinal.util.helper.MappingHelper;
+import com.febrizummiati.githubuserfinal.util.MappingHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ import java.util.List;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.febrizummiati.githubuserfinal.db.DatabaseContract.UserColumns.CONTENT_URI;
+import static com.febrizummiati.githubuserfinal.database.DatabaseContract.UserColumns.CONTENT_URI;
 
 public class UserVM extends ViewModel {
     private MutableLiveData<List<User>> listUsers = new MutableLiveData<>();
@@ -34,14 +33,6 @@ public class UserVM extends ViewModel {
     private User user;
     private Context context;
 
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
     public MutableLiveData<List<User>> getListUsers() {
         return listUsers;
     }
@@ -50,8 +41,8 @@ public class UserVM extends ViewModel {
         ApiInterface Service;
         retrofit2.Call<Result> Call;
         try {
-            Service = ApiClient.getApi().create(ApiInterface.class);
-            Call = Service.getListUser(username);
+            Service = Api.getApi().create(ApiInterface.class);
+            Call = Service.getList(username);
             Call.enqueue(new Callback<Result>() {
                 @Override
                 public void onResponse(retrofit2.Call<Result> call, Response<Result> response) {
@@ -61,7 +52,7 @@ public class UserVM extends ViewModel {
                     listUser = response.body().getResult();
                     listUsers.postValue(listUser);
                     if (listUser.isEmpty()) {
-                        Toast.makeText(context, R.string.not_found, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.user_not_found, Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -83,22 +74,22 @@ public class UserVM extends ViewModel {
     public void setUserLocal(ContentResolver contentResolver) {
         Cursor cursor = contentResolver.query(CONTENT_URI, null, null, null, null);
         if (cursor != null) {
-            ArrayList<User> userLocal = MappingHelper.mapCursorToArrayList(cursor);
+            ArrayList<User> userLocal = MappingHelper.myCursor(cursor);
             cursor.close();
             listUserDataLocal.postValue(userLocal);
         }
     }
 
-    public MutableLiveData<User> getuserDataApi() {
+    public MutableLiveData<User> getUserDataApi() {
         return userDataApi;
     }
 
-    public void setmUserDataApi(String login) {
+    public void setUserDataApi(String login) {
         ApiInterface Service;
         retrofit2.Call<User> Call;
         try {
-            Service = ApiClient.getApi().create(ApiInterface.class);
-            Call = Service.getDetailUser(login);
+            Service = Api.getApi().create(ApiInterface.class);
+            Call = Service.getDetail(login);
             Call.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(@NonNull retrofit2.Call<User> call, @NonNull Response<User> response) {
@@ -115,4 +106,12 @@ public class UserVM extends ViewModel {
             e.printStackTrace();
         }
     }
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
 }

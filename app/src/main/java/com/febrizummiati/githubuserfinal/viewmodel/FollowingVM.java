@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.febrizummiati.githubuserfinal.api.ApiClient;
+import com.febrizummiati.githubuserfinal.api.Api;
 import com.febrizummiati.githubuserfinal.api.ApiInterface;
 import com.febrizummiati.githubuserfinal.model.User;
 
@@ -27,7 +27,7 @@ public class FollowingVM extends ViewModel {
         ApiInterface Service;
         retrofit2.Call<List<User>> Call;
         try {
-            Service = ApiClient.getApi().create(ApiInterface.class);
+            Service = Api.getApi().create(ApiInterface.class);
             Call = Service.getListFollowing(username);
             Call.enqueue(new Callback<List<User>>() {
                 @Override

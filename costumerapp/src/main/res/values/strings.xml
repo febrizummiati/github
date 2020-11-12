@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Costumer App</string>
+    <string name="search">Search Username</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="repository">Repository</string>
+    <string name="user_not_found">User Not Found</string>
+    <string name="txt_lang">Change Language Setting</string>
+    <string name="txt_reminder">Reminder Setting</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="alarm_on">Alarm is Active</string>
+    <string name="alarm_off">Alarm is Non-Active</string>
+    <string name="message_alarm">Find user popular on Github!</string>
+    <string name="user_favorite">User Favorite</string>
+    <string name="addFavorite">Add to Favorite</string>
+    <string name="removeFavorite">Remove From Favorite</string>
+    <string name="success_add">Success Add User Favorite</string>
+    <string name="titleSearch">Search App</string>
+    <string name="titleDetail">Detail User</string>
+    <string name="empty">User Favorite is Empty</string>
+    <string name="desc_lang">You will change the language</string>
+    <string name="desc_reminder">Daily reminder running at 09:00 AM</string>
+</resources>

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.febrizummiati.githubuserfinal.R;
-import com.febrizummiati.githubuserfinal.adapter.UserAdapter;
+import com.febrizummiati.githubuserfinal.adapter.AdapterUser;
 import com.febrizummiati.githubuserfinal.model.User;
 import com.febrizummiati.githubuserfinal.ui.DetailActivity;
 import com.febrizummiati.githubuserfinal.viewmodel.FollowingVM;
@@ -27,7 +27,7 @@ public class FollowingFragment extends Fragment {
 
     private ProgressBar progressBar;
     private RecyclerView rvFollowing;
-    private UserAdapter adapter;
+    private AdapterUser adapter;
     private FollowingVM followingVM;
 
     public static final String EXTRA_FOLLOWING = "extra_following";
@@ -61,9 +61,9 @@ public class FollowingFragment extends Fragment {
 
             @Override
             public void onChanged(List<User> list) {
-                adapter = new UserAdapter();
+                adapter = new AdapterUser();
                 adapter.notifyDataSetChanged();
-                adapter.setListUsers(list);
+                adapter.setLists(list);
 
                 rvFollowing.setAdapter(adapter);
                 showLoading(false);

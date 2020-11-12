@@ -1,32 +1,25 @@
 package com.febrizummiati.githubuserfinal.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.febrizummiati.githubuserfinal.R;
-import com.febrizummiati.githubuserfinal.util.receiver.AlarmReceiver;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Locale;
-import java.util.Objects;
+import com.febrizummiati.githubuserfinal.R;
+import com.febrizummiati.githubuserfinal.util.ReminderReceiver;
 
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
-    LinearLayout changeLanguage;
-    TextView current_language;
-    Switch switchToggle;
 
-    AlarmReceiver alarmReceiver;
+    ReminderReceiver alarmReceiver;
 
     private String PREF_REMINDER = "pref_reminder";
-    boolean reminderSet = false;
 
     private SharedPreferences preferences;
 
@@ -34,46 +27,45 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        getSupportActionBar().setTitle(R.string.setting);
 
-        changeLanguage = findViewById(R.id.action_setting_language);
-        switchToggle = findViewById(R.id.switch_toggle);
-        current_language = findViewById(R.id.current_language);
+        ImageButton btnLanguage = findViewById(R.id.btn_language);
+        TextView txtLanguage = findViewById(R.id.txt_lang);
+        Switch switchReminder = findViewById(R.id.switch_reminder);
+        alarmReceiver = new ReminderReceiver();
 
-        alarmReceiver = new AlarmReceiver();
-        current_language.setText(Locale.getDefault().getDisplayLanguage());
+        btnLanguage.setOnClickListener(this);
+        txtLanguage.setOnClickListener(this);
 
-        changeLanguage.setOnClickListener(this);
         preferences = getSharedPreferences(PREF_REMINDER, Context.MODE_PRIVATE);
         if (preferences != null) {
-            reminderSet = preferences.getBoolean(PREF_REMINDER, false);
+            boolean reminderCheck = preferences.getBoolean(PREF_REMINDER, false);
 
-            if (reminderSet){
-                switchToggle.setChecked(true);
+            if (reminderCheck) {
+                switchReminder.setChecked(true);
             } else {
-                switchToggle.setChecked(false);
+                switchReminder.setChecked(false);
             }
         }
 
-        switchToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        switchReminder.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 String repeatTime = "09:00";
-                String repeatMessage = getResources().getString(R.string.alarm_message);
+                String repeatMessage = getResources().getString(R.string.message_alarm);
                 Context context = getApplicationContext();
-                alarmReceiver.setRepeatingAlarm(context, AlarmReceiver.TITLE, repeatTime, repeatMessage);
+                alarmReceiver.setRepeatAlarm(context, ReminderReceiver.TITLE, repeatTime, repeatMessage);
                 saveSetting(true);
             } else {
-                alarmReceiver.cancelAlarm(this);
+                alarmReceiver.cancelReminder(this);
                 saveSetting(false);
             }
         });
 
-        String titleDetail = getString(R.string.setting);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(titleDetail);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.action_setting_language) {
+        if (v.getId() == R.id.btn_language || v.getId()==R.id.txt_lang) {
             Intent changeLanguageIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(changeLanguageIntent);
         }

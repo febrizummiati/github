@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.febrizummiati.githubuserfinal">
-    <permission android:name="com.febrizummiati.githubuserfinal.READ_DATABASE"
-        android:protectionLevel="normal"/>
-    <permission android:name="com.febrizummiati.githubuserfinal.WRITE_DATABASE"
-        android:protectionLevel="normal"/>
+
+    <permission
+        android:name="com.febrizummiati.githubuserfinal.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.febrizummiati.githubuserfinal.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -22,27 +25,48 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <receiver
-            android:name=".util.receiver.AlarmReceiver"
-            android:enabled="true"
-            android:exported="true"
-            tools:ignore="ExportedReceiver" />
-        <activity android:name=".ui.SettingActivity"/>
+
         <provider
             android:authorities="com.febrizummiati.githubuserfinal"
-            android:name=".util.provider.FavoriteProvider"
+            android:name=".util.FavProvider"
             android:exported="true"
+            android:grantUriPermissions="true"
             android:readPermission="com.febrizummiati.githubuserfinal.READ_DATABASE"
-            android:writePermission="com.febrizummiati.githubuserfinal.WRITE_DATABASE"/>
+            android:writePermission="com.febrizummiati.githubuserfinal.WRITE_DATABASE" />
 
-        <activity android:name=".ui.FavoriteActivity"/>
-        <activity android:name=".ui.DetailActivity"/>
+        <receiver
+            android:name=".util.ReminderReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="TODO" />
 
-        <activity android:name=".ui.SearchActivity"
-            android:launchMode="singleTop">
+        <activity
+            android:name=".ui.FavActivity"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".ui.SettingActivity"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".ui.DetailActivity"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+        </activity>
+
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

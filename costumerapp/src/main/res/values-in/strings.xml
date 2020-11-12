@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Costumer App</string>
+    <string name="search">Cari Pengguna</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="repository">Repositori</string>
+    <string name="user_not_found">Pengguna Tidak Ditemukan</string>
+    <string name="txt_lang">Pengaturan Ubah Bahasa</string>
+    <string name="txt_reminder">Pengaturan Pengingat</string>
+    <string name="favorite">Favorit</string>
+    <string name="setting">Pengaturan</string>
+    <string name="alarm_on">Alarm Aktif</string>
+    <string name="alarm_off">Alarm Non-Aktif</string>
+    <string name="message_alarm">Temukan pengguna populer di Github</string>
+    <string name="user_favorite">Pengguna Favorit</string>
+    <string name="removeFavorite">Hapus dari Favorit</string>
+    <string name="success_add">Sukses Tambah User Favorit</string>
+    <string name="titleSearch">Aplikasi Pencarian</string>
+    <string name="titleDetail">Detail Pengguna</string>
+    <string name="addFavorite">Tambah ke Favorite</string>
+    <string name="empty">Pengguna Favorit Kosong</string>
+    <string name="desc_lang">Anda akan merubah bahasa</string>
+    <string name="desc_reminder">Pengingat Harian berjalan pukul 09:00</string>
+</resources>
